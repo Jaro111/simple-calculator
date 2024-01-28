@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import "./App.css"
-import { evaluate } from 'mathjs'
+import { bitNot, evaluate } from 'mathjs'
 
 // Simple calculator
 const App = () => {
@@ -8,6 +8,8 @@ const App = () => {
   const [btnValue, setbtnValue] = useState("")
   // Result value
   const [result, setResult ] = useState(0)
+
+
 
 
 
@@ -56,15 +58,10 @@ const clickHandler = (newChars) => {
       setResult(resultValue)
       setbtnValue(resultValue)
     }
-  
   }
-
-
 }
 
-
-
-  const buttons = ["","", "", "","CE", "√","%","/" ,"7", "8", "9", "*","4", "5", "6","-","1", "2", "3","+",".", "0",'x ²',"="]
+  const buttons = ["CE", "√","%","/" ,"7", "8", "9", "*","4", "5", "6","-","1", "2", "3","+",".", "0",'x ²',"="]
   return (
 
     <div className='play'>
@@ -79,7 +76,7 @@ const clickHandler = (newChars) => {
           <div className='buttonArea'>
               {buttons.map((buttons, index) => {
                 // Event to get typed values
-              return <Button key = {index} value={buttons} click = {() => clickHandler(buttons)} onKeyUp={(event) => handleKeyPress(event)}/>
+              return <Button key = {index} value={buttons} click = {() => clickHandler(buttons)}/>
               
               })
               }
